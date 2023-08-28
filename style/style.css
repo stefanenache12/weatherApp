@@ -1,0 +1,30 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing:border-box;
+font-family: 'Roboto', sans-serif;;
+
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    padding-top: 50px;
+    background: rgb(71,104,107);
+    background: linear-gradient(146deg, rgba(71,104,107,1) 39%, rgba(51,51,51,1) 58%);
+    background-repeat: no-repeat;
+}
+
+.my-container {
+    width: 40%;
+    margin:auto;
+    border: 2px solid black;
+    border-radius: 15px;
+    background: rgb(255,226,239);
+    background: linear-gradient(146deg, rgba(255,226,239,1) 0%, rgba(168,192,246,1) 51%, rgba(65,152,255,1) 85%);  
+    box-shadow: 5px 5px 15px 5px #000000;     
+}
+
+.form-search {
+    padding: 30px 50px;
+}
