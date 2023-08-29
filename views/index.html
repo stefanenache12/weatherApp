@@ -13,11 +13,12 @@
     </head>
     <body>
         <div id="app">
+            
             <div class="my-container">
                 <div class="form-search">
-                    <form class="d-flex" action="index.html" method="get" @submit.prevent="getCityInfo(city)">
+                    <form class="d-flex" action="index.html" method="get" @submit.prevent="getCityInfo(city),getCityData(city)">
                         <input class="form-control" type="text" placeholder="Enter Your City" name="city" v-model="city" aria-label="default input example">
-                        <button class=" ms-2 btn btn-outline-dark">Search</button>
+                        <button class=" ms-2 btn btn-outline-primary">Search</button>
                     </form>
                 </div>
                 <div class="info" v-if="cityData.main" >
@@ -28,10 +29,11 @@
                             </div>
                             <div class="col position-relative" v-if="cityData.clouds && cityData.clouds.all > 31 && cityData.clouds.all < 70">
                                 <i class="fa-solid fa-sun fa-5x" style="color: yellow;"></i>
-                                <i class="fa-solid fa-cloud fa-3x" style="color: grey; position: absolute; top: 0; right: 220px;"></i>
+                                <i class="fa-solid fa-cloud fa-3x" style="color: whitesmoke; position: absolute; top: 0; right: 200px;"></i>
+                                <i class="fa-solid fa-cloud fa-3x" style="color: whitesmoke; position: absolute; top: 20px; right: 120px;"></i>
                             </div>
                             <div class="col" v-if="cityData.clouds.all >= 70">
-                                <i class="fa-solid fa-cloud fa-5x" style="color: grey;"></i>
+                                <i class="fa-solid fa-cloud fa-5x" style="color: whitesmoke;"></i>
                             </div>
                             <div class="col pt-3">
                                 <h1>
@@ -75,6 +77,9 @@
                             </h4>
                         </div>
                     </div>
+                </div>
+                <div class="my-img" v-if="cityInfoFoto">
+                    <img :src="cityInfoFoto" alt="">
                 </div>
             </div>
         </div>
