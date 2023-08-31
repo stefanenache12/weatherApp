@@ -13,13 +13,21 @@
     </head>
     <body>
         <div id="app">
-            
-            <div class="my-container">
+            <div class="my-container pt-3 pb-3">
                 <div class="form-search">
-                    <form class="d-flex" action="index.html" method="get" @submit.prevent="getCityInfo(city),getCityData(city)">
-                        <input class="form-control" type="text" placeholder="Enter Your City" name="city" v-model="city" aria-label="default input example">
+                    <form class="d-flex" action="index.html"  method="get" @submit.prevent="getCityInfo(city),getCityData(city)">
+                        <input class="form-control" type="text" placeholder="Enter Your City" name="city" v-model="city" aria-label="default input example" pattern="[A-Za-z]+" title="Please enter a valid City Name" required>
                         <button class=" ms-2 btn btn-outline-primary">Search</button>
                     </form>
+                </div>
+                <div v-if="this.error">
+                    <div class="row text-center text-white">
+                        <div class="col">
+                            <h4 class="pt-3 pb-3">
+                                City Not Found
+                            </h4>
+                        </div>
+                    </div>
                 </div>
                 <div class="info" v-if="cityData.main" >
                     <div class="container">
@@ -69,15 +77,7 @@
                         </div>
                     </div>
                 </div>
-                <div v-if="this.error">
-                    <div class="row text-center text-white">
-                        <div class="col">
-                            <h4>
-                                City Not Found
-                            </h4>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="my-img" v-if="cityInfoFoto">
                     <img :src="cityInfoFoto" alt="">
                 </div>

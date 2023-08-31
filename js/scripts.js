@@ -37,7 +37,6 @@ createApp({
             .then(response => {
                 this.cityData = response.data;
                 this.error = false; 
-                console.log(this.cityData.clouds.all)
             })
             .catch(error =>  {
                 if (error.response && error.response.status === 404) {
