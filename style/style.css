@@ -28,10 +28,31 @@ body {
     border-radius: 15px;
 }
 
+.my-col {
+    margin: 7px;
+    width: 45%;
+    transition: all 0.5s ease;
+    background-color: #0000008d;
+    border-radius: 15px;
+    
+}
+
+.my-col:hover {
+    transform: scale(1.1);
+}
+
+
+
 .cat {
     width: 250px;
 }
 
+.btn-more {
+    position: absolute;
+    top: 45%;
+    right: 0;
+   
+}
 
 .my-img img {
     width: 100%;
@@ -41,11 +62,12 @@ body {
 }
 .my-container {
     position: relative;
-    width: 25%;
+    width: 350px;
+    height: 585px;
     margin:auto;
     border: 2px solid black;
     border-radius: 15px;
-    background-color: #00000083;
+    background-color: #0000009a;
     /*
     background: rgb(255,226,239);
     background: linear-gradient(146deg, rgba(255,226,239,1) 0%, rgba(168,192,246,1) 51%, rgba(65,152,255,1) 85%);

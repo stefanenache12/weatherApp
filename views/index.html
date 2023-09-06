@@ -31,7 +31,7 @@
                 </div>
                 <div class="info" v-if="cityData.main" >
                     <div class="container">
-                        <div class="row flex-column text-center" >
+                        <div class="row pt-5 flex-column text-center" v-if="this.hideCityInfo === true">
                             <div class="col" v-if="cityData.clouds.all <= 30">
                                 <i class="fa-solid fa-sun fa-5x" style="color: yellow;"></i>
                             </div>
@@ -43,38 +43,69 @@
                             <div class="col" v-if="cityData.clouds.all >= 70">
                                 <i class="fa-solid fa-cloud fa-5x" style="color: whitesmoke;"></i>
                             </div>
-                            <div class="col pt-3">
+                            <div class="col pt-4 pb-2 position-relative">
                                 <h1>
-                                    {{cityData.name}}
+                                    {{cityData.name}} 
                                 </h1>
                             </div>
-                            <div class="col pt-2">
+                            <div class="col pt-2 pb-5">
                                 <h2>
                                     <i class="fa-solid fa-temperature-three-quarters"></i>
                                     {{cityData.main.temp.toFixed(0)}} °C
                                 </h2>
                             </div>
-                        </div>
-                        <div class="row text-center text-white">
-                            <div class="col p-5">
-                                <i class="fa-solid fa-wind fa-3x" style="color: white;"></i>
-                                <h6>
-                                    Wind Speed
-                                </h6>
-                                <h5>
-                                    {{cityData.wind.speed}} km/h
-                                </h5>
+                            <div class="row text-center text-white">
+                                <div class="col ps-3 p-2 m-3">
+                                    <i class="fa-solid fa-wind fa-3x" style="color: white;"></i>
+                                    <h6>
+                                        Wind Speed
+                                    </h6>
+                                    <h5>
+                                        {{cityData.wind.speed}} km/h
+                                    </h5>
+                                </div>
+                                <div class="col ps-3 p-2 m-3">
+                                    <i class="fa-solid fa-water fa-3x" style="color: white;"></i>
+                                    <h6>
+                                        Humidity
+                                    </h6>
+                                    <h5>
+                                        {{cityData.main.humidity}} %
+                                    </h5>
+                                </div>
                             </div>
-                            <div class="col p-5">
-                                <i class="fa-solid fa-water fa-3x" style="color: white;"></i>
-                                <h6>
-                                    Humidity
-                                </h6>
-                                <h5>
-                                    {{cityData.main.humidity}} %
-                                </h5>
+                        </div>
+                        <div class="row flex-column text-center" v-else="this.hideCityInfo === false">
+                            <div class="col pt-3 position-relative">
+                                <h4>
+                                    Meteo in {{cityData.name}} during next days!
+                                </h4>
+                            </div>
+                            <div class="col pt-2" >
+                                <div class="row text-center">
+                                    <div class="col-6 my-col" v-for="day in dayInfo">
+                                        <div class="col-container">
+                                            <div v-if="day.clouds < 49">
+                                                <i class="p-2 fa-solid fa-sun fa-3x" style="color: yellow;"></i>
+                                            </div>
+                                            <div v-if="day.clouds > 50">
+                                                <i class="p-2 fa-solid fa-cloud fa-3x" style="color: whitesmoke;"></i>
+                                            </div>
+                                            <h5 class="p-2">
+                                                {{day.day}}/{{day.month}}
+                                            </h5>
+                                            <h3>
+                                                <i class="fa-solid fa-temperature-three-quarters"></i>
+                                                {{day.temperature.toFixed(0)}} °C
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <button class="btn-more btn btn-outline-success" @click="toggleCityInfo">
+                            <i class="fa-solid" :class="hideCityInfo ? 'fa-caret-right' : 'fa-caret-left'"></i>
+                        </button>
                     </div>
                 </div>
                 
